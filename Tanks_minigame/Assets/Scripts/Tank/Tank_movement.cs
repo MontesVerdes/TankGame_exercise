@@ -8,6 +8,7 @@ public class Tank_movement : MonoBehaviour
     public int speed;
     public int turn_speed;
     public bool is_ground;
+    bool camera_lock;
 
     [Header("Audio")]
     AudioSource child_audio;
@@ -28,6 +29,8 @@ public class Tank_movement : MonoBehaviour
     {
         Player_movement_input();
         Is_grounded();
+
+        camera_lock = GetComponent<Aim_enemy>().camera_lock;
     }
 
     void Player_movement_input()
@@ -38,7 +41,11 @@ public class Tank_movement : MonoBehaviour
         
         // Use player input to move and rotate
         transform.Translate(Vector3.forward * speed * Time.deltaTime * v);
-        transform.Rotate(Vector3.up * turn_speed * Time.deltaTime * h);
+        
+        if(camera_lock == false) // Check if camera is locked in enemy
+        {   
+            transform.Rotate(Vector3.up * turn_speed * Time.deltaTime * h);
+        }
 
         // If moving stop idle audio, plays running audio
         if(h != 0 || v != 0)

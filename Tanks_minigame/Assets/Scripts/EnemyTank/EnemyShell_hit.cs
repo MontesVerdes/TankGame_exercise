@@ -6,13 +6,16 @@ public class EnemyShell_hit : MonoBehaviour
 {
     bool is_explosion_over = true;
 
+    [Header("Collider")]
+    [SerializeField]
+    Collider this_colider;
+
     [Header("Particles")]
     [SerializeField]
     ParticleSystem explosion_particles;
 
     void OnTriggerEnter(Collider other)
     {   
-        
         //Unparent the particles from the shell and plays the particles
         explosion_particles.transform.parent = null;
         explosion_particles.Play();
@@ -21,11 +24,8 @@ public class EnemyShell_hit : MonoBehaviour
         ParticleSystem.MainModule mainModule = explosion_particles.main;
         Destroy (explosion_particles.gameObject, mainModule.duration);
         if(is_explosion_over == true) {StartCoroutine(destroy_after_sound());}
-        
-        // Check if the collider is the tank player
-        if(other.gameObject.CompareTag("Player_tank"))
-        {
-        }
+
+        this_colider.enabled = false;
     }
 
     // Destroys the object after the sound is played

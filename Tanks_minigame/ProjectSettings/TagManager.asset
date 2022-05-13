@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Player_tank
   - Enemy_tank
+  - Enemy_shell
+  - Player_shell
   layers:
   - Default
   - TransparentFX

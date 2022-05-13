@@ -4903,7 +4903,7 @@ GameObject:
   - component: {fileID: -1047460992731280722}
   m_Layer: 0
   m_Name: Enemy_shell_prefab
-  m_TagString: Untagged
+  m_TagString: Enemy_shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5112,6 +5112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67b65f9bcc01ab4791eda77837623b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  this_colider: {fileID: 3949773113747459557}
   explosion_particles: {fileID: 7243233144585650903}
 --- !u!114 &-1047460992731280722
 MonoBehaviour:
