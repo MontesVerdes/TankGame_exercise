@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shell_explosion : MonoBehaviour
+public class EnemyShell_hit : MonoBehaviour
 {
+    bool is_explosion_over = true;
+
     [Header("Particles")]
     [SerializeField]
     ParticleSystem explosion_particles;
 
-    bool is_explosion_over = true;
-
     void OnTriggerEnter(Collider other)
-    {
+    {   
+        
         //Unparent the particles from the shell and plays the particles
         explosion_particles.transform.parent = null;
         explosion_particles.Play();
@@ -20,9 +21,14 @@ public class Shell_explosion : MonoBehaviour
         ParticleSystem.MainModule mainModule = explosion_particles.main;
         Destroy (explosion_particles.gameObject, mainModule.duration);
         if(is_explosion_over == true) {StartCoroutine(destroy_after_sound());}
+        
+        // Check if the collider is the tank player
+        if(other.gameObject.CompareTag("Player_tank"))
+        {
+        }
     }
 
-    // Destroys the particles after the sound explosion is played
+    // Destroys the object after the sound is played
     IEnumerator destroy_after_sound()
     {
         is_explosion_over = false;

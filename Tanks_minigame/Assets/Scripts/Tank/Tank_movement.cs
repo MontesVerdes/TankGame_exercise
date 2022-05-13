@@ -35,9 +35,7 @@ public class Tank_movement : MonoBehaviour
         // Get player input
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(0, 0, v);
-
+        
         // Use player input to move and rotate
         transform.Translate(Vector3.forward * speed * Time.deltaTime * v);
         transform.Rotate(Vector3.up * turn_speed * Time.deltaTime * h);

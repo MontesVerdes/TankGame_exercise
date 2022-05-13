@@ -46,7 +46,7 @@ public class Tank_shot : MonoBehaviour
     IEnumerator reset_shell_speed()
     {
         yield return new WaitForSeconds(0.1f);
-        shell_speed = 0f;
+        shell_speed = 5f;
         new_shell.transform.parent = null;
     }
 
@@ -55,8 +55,8 @@ public class Tank_shot : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && (shell_speed < shell_max_speed))
         {
-            shell_speed = shell_speed + 0.15f;
-            Shell_slider.value = Shell_slider.value + 0.15f; // Slider UI
+            shell_speed = shell_speed + 0.2f;
+            Shell_slider.value = Shell_slider.value + 0.2f; // Slider UI
         }
     }
 }
