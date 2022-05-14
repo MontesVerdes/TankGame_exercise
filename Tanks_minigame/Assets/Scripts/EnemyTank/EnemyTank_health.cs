@@ -18,11 +18,23 @@ public class EnemyTank_health : MonoBehaviour
     [SerializeField]
     AudioClip explosion;
 
+    [Header("Enemylist")]
+    [SerializeField]
+    GameObject Enemy_manager;
+    Enemy_manager_script Enemy_manager_script;
+    List<GameObject> enemy_list;
+
     // Start is called before the first frame update
     void Start()
     {
         tank_max_health = 2;
         enemy_tank_current_health = tank_max_health;
+
+        Enemy_manager = GameObject.FindWithTag("Enemy_manager");
+
+        Enemy_manager_script = Enemy_manager.GetComponent<Enemy_manager_script>();
+
+        enemy_list = Enemy_manager_script.enemy_list;
     }
 
     // Update is called once per frame
@@ -44,6 +56,7 @@ public class EnemyTank_health : MonoBehaviour
 
         if(enemy_tank_current_health <= 0)
         {
+            enemy_list.Remove(this.gameObject);
             StartCoroutine(Tank_destroy());
         }
     }

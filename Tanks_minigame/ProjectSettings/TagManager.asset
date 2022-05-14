@@ -8,6 +8,7 @@ TagManager:
   - Enemy_tank
   - Enemy_shell
   - Player_shell
+  - Enemy_manager
   layers:
   - Default
   - TransparentFX

@@ -62,13 +62,10 @@ public class Aim_enemy : MonoBehaviour
             if (camera_lock == true){Look = StartCoroutine(LookCoroutine());}
         }
 
-        if(enemy_hp == 0)
+        if(enemy_hp == 0) // Deactivate canvas and lockon
         {
             Behaviour bhvr = (Behaviour)enemy_UI_canvas;
             bhvr.enabled = false;
-
-            Behaviour bhvr_lock = (Behaviour)LockOn_canvas;
-            bhvr_lock.enabled = false;
             
             camera_lock = false;
         }

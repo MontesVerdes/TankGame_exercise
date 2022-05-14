@@ -12,7 +12,8 @@ public class EnemyTank_movement : MonoBehaviour
     public bool is_close;
 
     [Header("Player tank")]
-    public Transform transform_player;
+    GameObject tank_player;
+    Transform transform_player;
     float distance_from_player;
 
     // Components
@@ -22,6 +23,10 @@ public class EnemyTank_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tank_player = GameObject.FindWithTag("Player_tank");
+
+        transform_player = tank_player.GetComponent<Transform>();
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -44,7 +49,6 @@ public class EnemyTank_movement : MonoBehaviour
 
     void Where_is_tank() // Check if this tank is far from players tank or close
     {   
-    
         distance_from_player = Vector3.Distance(transform.position, transform_player.position);
 
         if(distance_from_player > 10){Enemy_movement_forward();}

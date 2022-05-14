@@ -7,7 +7,6 @@ public class Tank_movement : MonoBehaviour
     [Header("Movement variables")]
     public int speed;
     public int turn_speed;
-    public bool is_ground;
     bool camera_lock;
 
     [Header("Audio")]
@@ -16,7 +15,6 @@ public class Tank_movement : MonoBehaviour
     
     // Components
     Rigidbody rb;
-    Ray ray;
     
     void Start()
     {
@@ -28,9 +26,7 @@ public class Tank_movement : MonoBehaviour
     void Update()
     {
         Player_movement_input();
-        Is_grounded();
-
-        camera_lock = GetComponent<Aim_enemy>().camera_lock;
+        camera_lock = GetComponent<Aim_atEnemy>().camera_lock;
     }
 
     void Player_movement_input()
@@ -61,22 +57,5 @@ public class Tank_movement : MonoBehaviour
             GetComponent<AudioSource>().UnPause();
             child_audio.Stop();
         }
-
-        // Tank jump with player input
-        if (Input.GetKeyDown(KeyCode.Space) && is_ground == true)
-        {
-            rb.AddForce(transform.up * 500);
-        }
-    }
-
-    bool Is_grounded() // Check if the tank is grounded
-    {
-        ray.origin = transform.position; // Raycast origin
-        ray.direction = -transform.up; // Raycast direction
-
-        if(Physics.Raycast(ray)) {is_ground = false;}
-        else {is_ground = true;}
-
-        return is_ground;
     }
 }

@@ -17,14 +17,18 @@ public class EnemyTank_shot : MonoBehaviour
 
     [Header("Player")]
     [SerializeField]
-    GameObject player_tank;
-    public Transform transform_player;
+    GameObject tank_player;
+    Transform transform_player;
     float distance_from_player;
     bool is_close;
 
     // Start is called before the first frame update
     void Start()
     {
+        tank_player = GameObject.FindWithTag("Player_tank");
+
+        transform_player = tank_player.GetComponent<Transform>();
+
         Shell_shot();
         shot_fired = false;
     }
