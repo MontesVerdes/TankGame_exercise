@@ -13,17 +13,19 @@ public class Shell_movement : MonoBehaviour
     // Gets shell velocity from parent at the start
     void Start()
     {
+        // Adds velocity to the shell
         Tank_shot = transform.parent.GetComponent<Tank_shot>();
         shell_speed = Tank_shot.shell_speed;
+        GetComponent<Rigidbody>().AddForce(transform.forward * (shell_speed * 300));
 
         // Screen shake when shooting
         source = GetComponent<Cinemachine.CinemachineImpulseSource>();
         source.GenerateImpulse(Camera.main.transform.forward);
     }
 
-    // Moves the shell
     void Update()
     {
-        transform.Translate(shell_speed * Vector3.forward * Time.deltaTime);   
+        // Shell orientation follows direction
+        transform.forward = GetComponent<Rigidbody>().velocity;
     }
 }

@@ -12,14 +12,17 @@ public class Tank_shot : MonoBehaviour
     public float shell_speed;
     float shell_max_speed = 15;
     GameObject new_shell;
+    bool reloading = false;
 
     [Header("UI")]
     [SerializeField]
     Slider Shell_slider;
+    [SerializeField]
+    Animation shell_animation;
 
     [Header("Sound")]
     [SerializeField]
-    AudioClip shoot_sound;
+    AudioClip shoot_sound, reload_sound;
 
     void Update()
     {
@@ -30,16 +33,27 @@ public class Tank_shot : MonoBehaviour
     void Shell_shot()
     {
         // Instantiate a tank shell with player input
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0) && reloading == false)
         {
             new_shell = Instantiate(Shell_prefab, Shoot_transform.position, Shoot_transform.rotation);
             new_shell.transform.parent = this.transform;
 
             Shell_slider.value = 0; // Slider UI
             StartCoroutine(reset_shell_speed());
+            StartCoroutine (cannon_reload());
 
             GetComponent<AudioSource>().PlayOneShot (shoot_sound, 1);
         }
+    }
+
+    IEnumerator cannon_reload()
+    {
+        reloading = true;
+        yield return new WaitForSeconds(1f);
+        shell_animation.Play("Shell_animation");
+        GetComponent<AudioSource>().PlayOneShot (reload_sound, 1);
+        yield return new WaitForSeconds(1f);
+        reloading = false;
     }
 
     // Resets the shell_speed after the shell instance got it, and detach from tank
@@ -53,10 +67,10 @@ public class Tank_shot : MonoBehaviour
     // Sets shell velocity from user input
     void Shell_velocity()
     {
-        if(Input.GetMouseButton(0) && (shell_speed < shell_max_speed))
+        if(Input.GetMouseButton(0) && (shell_speed < shell_max_speed) && reloading ==  false)
         {
-            shell_speed = shell_speed + 0.2f;
-            Shell_slider.value = Shell_slider.value + 0.2f; // Slider UI
+            shell_speed = shell_speed + 0.1f;
+            Shell_slider.value = Shell_slider.value + 0.1f; // Slider UI
         }
     }
 }

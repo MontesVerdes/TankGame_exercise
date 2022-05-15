@@ -13,16 +13,21 @@ public class EnemyTank_health : MonoBehaviour
     [SerializeField]
     GameObject enemy_health_bar;
     public Image[] enemy_health_array;
+    [SerializeField]
+    Animation tank_animation;
 
     [Header("Sound")]
     [SerializeField]
-    AudioClip explosion;
+    AudioClip explosion, bullets_hit;
 
     [Header("Enemylist")]
     [SerializeField]
     GameObject Enemy_manager;
     Enemy_manager_script Enemy_manager_script;
     List<GameObject> enemy_list;
+
+    [Header("Bullets")]
+    int bullet_count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +73,25 @@ public class EnemyTank_health : MonoBehaviour
         {
             Tank_hit();
         }
+
+        // Check if the collider is the bullets
+        if(other.gameObject.CompareTag("Bullets") && enemy_tank_current_health > 0)
+        {
+            ++bullet_count;
+            GetComponent<AudioSource>().PlayOneShot (bullets_hit, 1);
+            if(bullet_count >= 3)
+            {
+                Tank_hit();
+                bullet_count = 0;
+            }
+        }
     }
 
     IEnumerator Tank_destroy() // Destroy enemy tank
     {
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(explosion, 1f);
+        tank_animation.Play("tank_ui");
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

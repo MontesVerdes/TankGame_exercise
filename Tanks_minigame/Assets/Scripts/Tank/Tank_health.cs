@@ -14,6 +14,8 @@ public class Tank_health : MonoBehaviour
     [SerializeField]
     GameObject health_bar;
     public Image[] health_array;
+    [SerializeField]
+    Animation wrench_ui_animation;
 
     // For screen shake
     Cinemachine.CinemachineImpulseSource source;
@@ -28,6 +30,12 @@ public class Tank_health : MonoBehaviour
     {
         Behaviour bhvr = (Behaviour)health_array[tank_current_health];
         bhvr.enabled = false;
+    }
+
+    void Tank_health_ui_up() // Update the UI life bar
+    {
+        Behaviour bhvr = (Behaviour)health_array[tank_current_health - 1];
+        bhvr.enabled = true;
     }
 
     void Tank_hit() // Remove a life point and calls the ui
@@ -46,5 +54,12 @@ public class Tank_health : MonoBehaviour
             source = GetComponent<Cinemachine.CinemachineImpulseSource>();
             source.GenerateImpulse(Camera.main.transform.forward);
         }
+    }
+
+    public void health_up()
+    {
+        tank_current_health = tank_current_health + 1;
+        Tank_health_ui_up();
+        wrench_ui_animation.Play("WrenchUI_animation");
     }
 }

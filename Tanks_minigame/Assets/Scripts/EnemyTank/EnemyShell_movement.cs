@@ -8,18 +8,15 @@ public class EnemyShell_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Shell_velocity();
         transform.parent = null;
+
+        shell_speed = Random.Range(5f,10f);
+        GetComponent<Rigidbody>().AddForce(transform.forward * (shell_speed * 300));
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(shell_speed * Vector3.forward * Time.deltaTime);
-    }
-
-    void Shell_velocity()
-    {
-        shell_speed = Random.Range(8f,13f);
+        // Shell orientation follows direction
+        transform.forward = GetComponent<Rigidbody>().velocity;
     }
 }

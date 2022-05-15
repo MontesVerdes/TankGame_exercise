@@ -821,7 +821,10 @@ MonoBehaviour:
   enemy_health_array:
   - {fileID: 3826980313162589625}
   - {fileID: 3826980314569588360}
+  tank_animation: {fileID: 3207298682925029299}
   explosion: {fileID: 8300000, guid: 5c27182a28a7eb942a362e6d198fe0e6, type: 3}
+  bullets_hit: {fileID: 8300000, guid: 7b5cdd242a870c441adb28bea3281bae, type: 3}
+  Enemy_manager: {fileID: 0}
 --- !u!1 &8060494615343948125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f070951796071748808ba520068a2c9, type: 3}
+--- !u!111 &3207298682925029299 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 4671148846817473277, guid: 0f070951796071748808ba520068a2c9, type: 3}
+  m_PrefabInstance: {fileID: 7805261556795893070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3826980313162589625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6435070307776381175, guid: 0f070951796071748808ba520068a2c9, type: 3}

@@ -41,9 +41,9 @@ public class Enemy_manager_script : MonoBehaviour
 
         if(rand == 2 || rand == 3)
         {
-            float random_y = Random.Range(-25f, 35f);
-            Vector3 random_y_vector = new Vector3(0f,random_y,0f);
-            temp_position = new_position.position + random_y_vector;
+            float random_z = Random.Range(-25f, 35f);
+            Vector3 random_z_vector = new Vector3(0f,0f,random_z);
+            temp_position = new_position.position + random_z_vector;
         }
 
         target = Instantiate(tank_prefab, temp_position, new_position.rotation);
