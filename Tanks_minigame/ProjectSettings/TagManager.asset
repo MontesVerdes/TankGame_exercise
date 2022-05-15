@@ -9,6 +9,7 @@ TagManager:
   - Enemy_shell
   - Player_shell
   - Enemy_manager
+  - Bullets
   layers:
   - Default
   - TransparentFX
