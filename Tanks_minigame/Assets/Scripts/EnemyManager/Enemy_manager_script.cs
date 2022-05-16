@@ -50,7 +50,7 @@ public class Enemy_manager_script : MonoBehaviour
 
         Add_to_enemy_list(target);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(3f);
         
         spawn_finish = true;
     }

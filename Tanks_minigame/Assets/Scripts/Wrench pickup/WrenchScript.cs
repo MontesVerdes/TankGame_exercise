@@ -12,14 +12,21 @@ public class WrenchScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tank_player = GameObject.FindWithTag("Player_tank");
-        tank_health = tank_player.GetComponent<Tank_health>();
+        if(tank_player == null)
+        {
+            tank_player = GameObject.FindWithTag("user_tank");
+            tank_health = tank_player.GetComponent<Tank_health>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        tank_current_health = tank_health.tank_current_health;
+        if(tank_health != null)
+        {
+            tank_current_health = tank_health.tank_current_health;
+            Debug.Log("bien!" + tank_current_health);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,7 +35,10 @@ public class WrenchScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player_tank") && tank_current_health < 5)
         {   
             tank_health.health_up();
+
             StartCoroutine(Destroy());
+
+            Debug.Log("Ha entrado!");
         }
     }
 
@@ -37,7 +47,13 @@ public class WrenchScript : MonoBehaviour
         GetComponent<AudioSource>().Play();
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.837f);  
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(5f);
+        Create(); 
+    }
+
+    public void Create()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 }

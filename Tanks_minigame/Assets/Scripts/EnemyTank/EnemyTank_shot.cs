@@ -25,7 +25,7 @@ public class EnemyTank_shot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tank_player = GameObject.FindWithTag("Player_tank");
+        tank_player = GameObject.FindWithTag("user_tank");
 
         transform_player = tank_player.GetComponent<Transform>();
 

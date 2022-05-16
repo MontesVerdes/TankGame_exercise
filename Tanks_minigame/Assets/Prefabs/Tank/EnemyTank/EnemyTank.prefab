@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8060494614175103894}
   m_LocalRotation: {x: -0.17296687, y: -0, z: -0, w: 0.98492765}
-  m_LocalPosition: {x: 0, y: 0.501, z: 0.987}
+  m_LocalPosition: {x: 0, y: 0.7, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,7 +436,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7ca9fb5aa30155449192b23d7fb3336, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.15
   m_Pitch: 1
@@ -687,7 +687,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.15
   m_Pitch: 1
@@ -825,6 +825,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 5c27182a28a7eb942a362e6d198fe0e6, type: 3}
   bullets_hit: {fileID: 8300000, guid: 7b5cdd242a870c441adb28bea3281bae, type: 3}
   Enemy_manager: {fileID: 0}
+  GameManager: {fileID: 0}
 --- !u!1 &8060494615343948125
 GameObject:
   m_ObjectHideFlags: 0

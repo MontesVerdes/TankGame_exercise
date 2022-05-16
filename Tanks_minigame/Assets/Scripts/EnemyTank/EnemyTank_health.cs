@@ -29,6 +29,10 @@ public class EnemyTank_health : MonoBehaviour
     [Header("Bullets")]
     int bullet_count = 0;
 
+    [Header("GameManager")]
+    [SerializeField]
+    GameManager GameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,8 @@ public class EnemyTank_health : MonoBehaviour
         Enemy_manager_script = Enemy_manager.GetComponent<Enemy_manager_script>();
 
         enemy_list = Enemy_manager_script.enemy_list;
+
+        GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -92,8 +98,8 @@ public class EnemyTank_health : MonoBehaviour
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(explosion, 1f);
         tank_animation.Play("tank_ui");
+        GameManager.enemy_kill_count();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
-
 }

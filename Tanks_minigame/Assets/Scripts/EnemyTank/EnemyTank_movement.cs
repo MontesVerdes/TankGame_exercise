@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyTank_movement : MonoBehaviour
 {
     [Header("Movement variables")]
-    public int speed;
+    public int speed = 3;
     bool is_ground;
 
     public bool is_far;
