@@ -25,7 +25,6 @@ public class WrenchScript : MonoBehaviour
         if(tank_health != null)
         {
             tank_current_health = tank_health.tank_current_health;
-            Debug.Log("bien!" + tank_current_health);
         }
     }
 

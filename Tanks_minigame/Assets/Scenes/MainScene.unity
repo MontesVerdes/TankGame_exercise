@@ -3698,7 +3698,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6171,7 +6171,6 @@ MonoBehaviour:
   tanks_defeated_text: {fileID: 753457377}
   tanks_defeated_text2: {fileID: 678805759}
   player_tank: {fileID: 326581435}
-  tank_audio: {fileID: 1331539211}
   main_camera: {fileID: 963194225}
   enemy_count: 0
   tanks_destroyed_ui: {fileID: 2021236322}
@@ -7179,7 +7178,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!82 &1331539211
 AudioSource:
@@ -7822,7 +7821,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7826087, y: 1}
+    m_SensorSize: {x: 2.332425, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
