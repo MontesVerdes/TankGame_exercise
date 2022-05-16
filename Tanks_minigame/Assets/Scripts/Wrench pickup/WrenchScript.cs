@@ -46,7 +46,7 @@ public class WrenchScript : MonoBehaviour
         GetComponent<AudioSource>().Play();
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(30f);
         Create(); 
     }
 

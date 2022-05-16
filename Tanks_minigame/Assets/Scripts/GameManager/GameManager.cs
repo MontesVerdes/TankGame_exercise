@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void Quit() // Quit Game
     {
         Application.Quit();
+
     }
 
     public void enemy_kill_count()

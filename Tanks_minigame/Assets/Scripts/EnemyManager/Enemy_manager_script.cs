@@ -29,28 +29,14 @@ public class Enemy_manager_script : MonoBehaviour
         int rand = Random.Range(0,3);
         
         Transform new_position = Spawners_array[rand].transform;
-        Vector3 temp_position = new Vector3(0f,0f,0f);
 
-        // Adds more range to the posible enemy spawn positions
-        if(rand == 0 || rand == 1)
-        {
-            float random_x = Random.Range(-30f, 25f);
-            Vector3 random_x_vector = new Vector3(random_x,0f,0f);
-            temp_position = new_position.position + random_x_vector;
-        }
-
-        if(rand == 2 || rand == 3)
-        {
-            float random_z = Random.Range(-25f, 35f);
-            Vector3 random_z_vector = new Vector3(0f,0f,random_z);
-            temp_position = new_position.position + random_z_vector;
-        }
+        Vector3 temp_position = new_position.position;
 
         target = Instantiate(tank_prefab, temp_position, new_position.rotation);
 
         Add_to_enemy_list(target);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         
         spawn_finish = true;
     }

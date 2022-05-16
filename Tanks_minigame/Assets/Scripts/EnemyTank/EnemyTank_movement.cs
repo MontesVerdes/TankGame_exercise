@@ -1,32 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyTank_movement : MonoBehaviour
 {
     [Header("Movement variables")]
     public int speed = 3;
-    bool is_ground;
-
-    public bool is_far;
-    public bool is_close;
+    NavMeshAgent agent;
+    float distance_from_player;
+    Transform transform_player;
+    Rigidbody rb;
 
     [Header("Player tank")]
     GameObject tank_player;
-    Transform transform_player;
-    float distance_from_player;
-
-    // Components
-    Rigidbody rb;
-    Ray ray;
 
     // Start is called before the first frame update
     void Start()
     {
-        tank_player = GameObject.FindWithTag("Player_tank");
-
+        tank_player = GameObject.FindWithTag("user_tank");
+        agent = GetComponent<NavMeshAgent>();
         transform_player = tank_player.GetComponent<Transform>();
-
         rb = GetComponent<Rigidbody>();
     }
 
@@ -37,22 +31,28 @@ public class EnemyTank_movement : MonoBehaviour
         Where_is_tank(); 
     }
 
-    void Enemy_movement_forward() // Move enemy tank forward
+    void Movement() // Runs to player
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * 1);
+        if(tank_player == null) return;
+
+        agent.SetDestination(tank_player.transform.position);
+
+        agent.stoppingDistance = 10f;
     }
 
-    void Enemy_movement_backwards() // Move enemy tank backwards
+    void Movement_backwards() // Flee from player
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * -1);
+        if(tank_player == null) return;
+        
+        agent.velocity = -transform.forward * 5;
     }
 
-    void Where_is_tank() // Check if this tank is far from players tank or close
+    void Where_is_tank() // Check if player is close
     {   
         distance_from_player = Vector3.Distance(transform.position, transform_player.position);
 
-        if(distance_from_player > 10){Enemy_movement_forward();}
+        if(distance_from_player > 10){Movement();}
 
-        if(distance_from_player < 8){Enemy_movement_backwards();}
+        if(distance_from_player < 8){Movement_backwards();}
     }
 }

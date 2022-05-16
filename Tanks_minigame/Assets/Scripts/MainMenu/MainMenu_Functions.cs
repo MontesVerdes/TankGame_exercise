@@ -11,7 +11,7 @@ public class MainMenu_Functions : MonoBehaviour
     
     public void play()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ToysScene");
     }
 
     public void controls()

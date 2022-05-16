@@ -24,6 +24,11 @@ public class Tank_shot : MonoBehaviour
     [SerializeField]
     AudioClip shoot_sound, reload_sound;
 
+    [Header("Pause")]
+    [SerializeField]
+    PauseMenu PauseMenu;
+    bool game_is_paused;
+
     void Update()
     {
         Shell_velocity();
@@ -32,8 +37,10 @@ public class Tank_shot : MonoBehaviour
 
     void Shell_shot()
     {
+        game_is_paused = PauseMenu.game_is_paused;
+
         // Instantiate a tank shell with player input
-        if(Input.GetMouseButtonUp(0) && reloading == false)
+        if(Input.GetMouseButtonUp(0) && !reloading && !game_is_paused)
         {
             new_shell = Instantiate(Shell_prefab, Shoot_transform.position, Shoot_transform.rotation);
             new_shell.transform.parent = this.transform;
@@ -67,7 +74,7 @@ public class Tank_shot : MonoBehaviour
     // Sets shell velocity from user input
     void Shell_velocity()
     {
-        if(Input.GetMouseButton(0) && (shell_speed < shell_max_speed) && reloading ==  false)
+        if(Input.GetMouseButton(0) && (shell_speed < shell_max_speed) && !reloading && !game_is_paused)
         {
             shell_speed = shell_speed + 0.1f;
             Shell_slider.value = Shell_slider.value + 0.1f; // Slider UI
