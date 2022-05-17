@@ -22,7 +22,6 @@ public class Bullets_firing : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         shot_bullets();
@@ -36,7 +35,7 @@ public class Bullets_firing : MonoBehaviour
         }
     }
 
-    IEnumerator shot_delay()
+    IEnumerator shot_delay() // Shoots bullets and play the sound
     {
         delay = true;
 

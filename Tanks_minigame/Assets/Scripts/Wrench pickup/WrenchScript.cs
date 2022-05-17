@@ -36,8 +36,6 @@ public class WrenchScript : MonoBehaviour
             tank_health.health_up();
 
             StartCoroutine(Destroy());
-
-            Debug.Log("Ha entrado!");
         }
     }
 
@@ -50,7 +48,7 @@ public class WrenchScript : MonoBehaviour
         Create(); 
     }
 
-    public void Create()
+    public void Create() // Spawns a new wrench
     {
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
